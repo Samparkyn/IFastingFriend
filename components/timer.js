@@ -5,14 +5,11 @@ import { Timer } from 'react-native-stopwatch-timer'
 
 export default class FastingTimer extends Component {
   
-  constructor(props) {
-    super(props);
-    this.state = {
+    state = {
       totalDuration: 90000,
       timerStart: false,
       timerReset: false
-    };
-  }
+    }
   
   toggleTimer = () => {
     this.setState({timerStart: !this.state.timerStart, timerReset: false});
@@ -29,7 +26,8 @@ export default class FastingTimer extends Component {
         <Timer
           totalDuration={this.state.totalDuration}
           msecs start={this.state.timerStart}
-          reset={this.state.timerReset} />
+          reset={this.state.timerReset}
+        />
         <TouchableHighlight onPress={this.toggleTimer}>
           <Text style={styles.font}>{!this.state.timerStart ? "Start" : "Stop"}</Text>
         </TouchableHighlight>
