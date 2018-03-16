@@ -12,16 +12,13 @@ export default class FastingTimer extends Component {
       timerStart: false,
       timerReset: false
     };
-    this.toggleTimer = this.toggleTimer.bind(this);
-    this.resetTimer = this.resetTimer.bind(this);
-    
   }
   
-  toggleTimer() {
+  toggleTimer = () => {
     this.setState({timerStart: !this.state.timerStart, timerReset: false});
   }
   
-  resetTimer() {
+  resetTimer = () => {
     this.setState({timerStart: false, timerReset: true});
   }
     
@@ -29,17 +26,26 @@ export default class FastingTimer extends Component {
     return (
       <View>
         <Text>This is the timer component</Text>
-        <Timer totalDuration={this.state.totalDuration} msecs start={this.state.timerStart}
+        <Timer
+          totalDuration={this.state.totalDuration}
+          msecs start={this.state.timerStart}
           reset={this.state.timerReset} />
         <TouchableHighlight onPress={this.toggleTimer}>
-          <Text style={{fontSize: 30}}>{!this.state.timerStart ? "Start" : "Stop"}</Text>
+          <Text style={styles.font}>{!this.state.timerStart ? "Start" : "Stop"}</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={this.resetTimer}>
-          <Text style={{fontSize: 30}}>Reset</Text>
+          <Text style={styles.font}>Reset</Text>
         </TouchableHighlight>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  font: {
+    fontSize: 30,
+    color: 'blue',
+  },
+});
 
 AppRegistry.registerComponent('FastingTimer', () => FastingTimer);
