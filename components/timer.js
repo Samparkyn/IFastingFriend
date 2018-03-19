@@ -3,58 +3,19 @@ import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, Picker } from 
 import { Timer } from 'react-native-stopwatch-timer'
 
 const fastingTimes = [
-  {
-    label: "12h",
-    value: 4.32e+7,
-  },
-  {
-    label: "13h",
-    value: 4.68e+7,
-  },
-  {
-    label: "14h",
-    value: 5.04e+7,
-  },
-  {
-    label: "15h",
-    value: 5.4e+7,
-  },
-  {
-    label: "16h",
-    value: 5.76e+7,
-  },
-  {
-    label: "17h",
-    value: 6.12e+7,
-  },
-  {
-    label: "18h",
-    value: 6.48e+7,
-  },
-  {
-    label: "19h",
-    value: 6.84e+7,
-  },
-  {
-    label: "20h",
-    value: 7.2e+7,
-  },
-  {
-    label: "21h",
-    value: 7.56e+7,
-  },
-  {
-    label: "22h",
-    value: 7.92e+7,
-  },
-  {
-    label: "23h",
-    value: 8.28e+7,
-  },
-  {
-    label: "Go full 24h !",
-    value: 8.64e+7,
-  }
+  { label: "12h", value: 4.32e+7 },
+  { label: "13h", value: 4.68e+7 },
+  { label: "14h", value: 5.04e+7 },
+  { label: "15h", value: 5.4e+7 },
+  { label: "16h", value: 5.76e+7 },
+  { label: "17h", value: 6.12e+7 },
+  { label: "18h", value: 6.48e+7 },
+  { label: "19h", value: 6.84e+7 },
+  { label: "20h", value: 7.2e+7 },
+  { label: "21h", value: 7.56e+7 },
+  { label: "22h", value: 7.92e+7 },
+  { label: "23h", value: 8.28e+7 },
+  { label: "Go full 24h !", value: 8.64e+7 }
 ]
 
 export default class FastingTimer extends Component {
