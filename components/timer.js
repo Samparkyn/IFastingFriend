@@ -18,6 +18,11 @@ const fastingTimes = [
   { label: "Go full 24h !", value: 8.64e+7 }
 ]
 
+let motivationalText = "You got this"
+const motivationMessage = [
+  "Motivation 1", "Motivation 2", "Motivation 3", "Motivation 4"
+]
+
 export default class FastingTimer extends Component {
   state = {
     selectedTimeIdx: 4,
@@ -30,16 +35,20 @@ export default class FastingTimer extends Component {
   }
   
   resetTimer = () => {
-    this.setState({isRunning: false, timerReset: true});
+    this.setState({isRunning: false, timerReset: true})
+  }
+  
+  getRandomNum = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
     
   render() {
     const { isRunning, timerReset, selectedTimeIdx } = this.state
-
     const selectedDuration = fastingTimes[selectedTimeIdx]['value']
     const selectedDurationLabel = fastingTimes[selectedTimeIdx]['label']
-    
-    let motivationalText = "You got this"
+      
+    const randomNum = this.getRandomNum(0, motivationMessage.length)
+    const randomMessage = motivationMessage[randomNum]
   
     let startButton
     if (!isRunning) {
@@ -53,6 +62,12 @@ export default class FastingTimer extends Component {
         <Text style={styles.startButton}>{motivationalText}</Text>
       )
     }
+    
+    let resetButton = (
+      <TouchableHighlight onPress={this.resetTimer}>
+        <Text style={styles.stopButton}>Time to nomnom</Text>
+      </TouchableHighlight>
+    )
 
     const pickerOptions = fastingTimes.map((timeObj, idx) => {
       return <Picker.Item key={idx} label={timeObj.label} value={timeObj.value} />
@@ -61,6 +76,7 @@ export default class FastingTimer extends Component {
     return (
       <View style={styles.container}>
         <Text>IFasting Friend</Text>
+        <Text>{randomMessage}</Text>
         <Picker
           prompt="Choose your Fasting time"
           mode="dialog"
@@ -76,9 +92,7 @@ export default class FastingTimer extends Component {
           style={styles.timer}
         />
         {startButton}
-        <TouchableHighlight onPress={this.resetTimer}>
-          <Text style={styles.stopButton}>Time to nomnom</Text>
-        </TouchableHighlight>
+        {resetButton}
       </View>
     );
   }
@@ -92,12 +106,12 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   container: {
-     alignItems: 'center'
+     alignItems: 'center',
   },
   startButton: {
     fontSize: 30,
     color: 'white',
-    backgroundColor: 'red',
+    backgroundColor: 'green',
     borderRadius: 5,
     textAlign: 'center',
     marginTop: 5,
