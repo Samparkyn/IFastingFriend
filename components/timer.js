@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, Picker } from 'react-native';
 import { Timer } from 'react-native-stopwatch-timer'
+import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
+
 
 const fastingTimes = [
   { label: "12h", value: 4.32e+7 },
@@ -20,7 +22,7 @@ const fastingTimes = [
 
 let motivationalText = "You got this"
 const motivationMessage = [
-  "Motivation 1", "Motivation 2", "Motivation 3", "Motivation 4"
+  "Periodic fasting can help clear up the mind and strengthen the body and the spirit", "When you fast, insulin levels drop and human growth hormone increases. Your cells also initiate important cellular repair processes and change which genes they express.", "Studies show that intermittent fasting can improve numerous risk factors for heart disease such as blood pressure, cholesterol levels, triglycerides and inflammatory markers.", "Intermittent fasting may have important benefits for brain health. It may increase growth of new neurons and protect the brain from damage."
 ]
 
 export default class FastingTimer extends Component {
@@ -76,7 +78,13 @@ export default class FastingTimer extends Component {
     return (
       <View style={styles.container}>
         <Text>IFasting Friend</Text>
-        <Text>{randomMessage}</Text>
+        <Card style={styles.messageCardContainer}>
+          <CardTitle
+            title={randomMessage}
+            style={styles.messageCard}/>
+          
+        </Card>
+      <Card style={styles.timerContainer}>
         <Picker
           prompt="Choose your Fasting time"
           mode="dialog"
@@ -89,10 +97,10 @@ export default class FastingTimer extends Component {
           totalDuration={selectedDuration}
           start={isRunning}
           reset={timerReset}
-          style={styles.timer}
         />
         {startButton}
         {resetButton}
+      </Card>
       </View>
     );
   }
@@ -107,6 +115,7 @@ const styles = StyleSheet.create({
   },
   container: {
      alignItems: 'center',
+     backgroundColor: '#DFD9D9',
   },
   startButton: {
     fontSize: 30,
@@ -126,8 +135,16 @@ const styles = StyleSheet.create({
     marginTop: 5,
     padding: 10,
   },
-  timer: {
-    
+  messageCardContainer: {
+    backgroundColor: '#ABB3ED',
+  },
+  messageCardTitle: {
+    margin: 20,
+    height: 20,
+    color: '#857F82',
+  },
+  timerContainer: {
+    backgroundColor: '#C9CEF4',
   },
 });
 
