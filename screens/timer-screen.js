@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, Picker } from 'react-native';
 import { Timer } from 'react-native-stopwatch-timer'
-import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
-
 
 const fastingTimes = [
   { label: "12h", value: 4.32e+7 },
@@ -78,13 +76,7 @@ export default class FastingTimer extends Component {
     return (
       <View style={styles.container}>
         <Text>IFasting Friend</Text>
-        <Card style={styles.messageCardContainer}>
-          <CardTitle
-            title={randomMessage}
-            style={styles.messageCard}/>
-          
-        </Card>
-      <Card style={styles.timerContainer}>
+        <Text>{randomMessage}</Text>
         <Picker
           prompt="Choose your Fasting time"
           mode="dialog"
@@ -100,7 +92,6 @@ export default class FastingTimer extends Component {
         />
         {startButton}
         {resetButton}
-      </Card>
       </View>
     );
   }
@@ -116,6 +107,8 @@ const styles = StyleSheet.create({
   container: {
      alignItems: 'center',
      backgroundColor: '#DFD9D9',
+     flex: 1,
+     justifyContent: 'center'
   },
   startButton: {
     fontSize: 30,
@@ -134,17 +127,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 5,
     padding: 10,
-  },
-  messageCardContainer: {
-    backgroundColor: '#ABB3ED',
-  },
-  messageCardTitle: {
-    margin: 20,
-    height: 20,
-    color: '#857F82',
-  },
-  timerContainer: {
-    backgroundColor: '#C9CEF4',
   },
 });
 
