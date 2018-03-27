@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Card from '../components/card'
 
-export default class Stats extends React.Component {
+export default class Stats extends Component {
   render() {
     return (
-    <Text>Here are your stats!</Text>
+      <Card>
+        <Text>Here are your IFast stats</Text>
+      </Card>
     );
   }
 }

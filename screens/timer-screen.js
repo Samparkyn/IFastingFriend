@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, Picker } from 'react-native';
 import { Timer } from 'react-native-stopwatch-timer'
+import Card from '../components/card'
 
 const fastingTimes = [
+  { label: "30s Test", value: 30000},
   { label: "12h", value: 4.32e+7 },
   { label: "13h", value: 4.68e+7 },
   { label: "14h", value: 5.04e+7 },
@@ -76,13 +78,16 @@ export default class FastingTimer extends Component {
     return (
       <View style={styles.container}>
         <Text>IFasting Friend</Text>
-        <Text>{randomMessage}</Text>
+        <Card>
+          <Text>{randomMessage}</Text>
+        </Card>
         <Picker
           prompt="Choose your Fasting time"
           mode="dialog"
           style={styles.picker}
           onValueChange={(val, idx) => this.setState({selectedTimeIdx: idx})}
-          selectedValue={selectedDuration}>
+          selectedValue={selectedDuration}
+        >
           {pickerOptions}
         </Picker>
         <Timer
